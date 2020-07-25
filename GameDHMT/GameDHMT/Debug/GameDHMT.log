@@ -1,1 +1,8 @@
-﻿  GameDHMT.vcxproj -> D:\DHMT-TH-\GameDHMT\Debug\GameDHMT.exe
+﻿  main.cpp
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(989,50): warning C4244:  'argument': conversion from 'double' to 'GLfloat', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(989,25): warning C4244:  'argument': conversion from 'double' to 'GLfloat', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1048,27): warning C4244:  '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1049,28): warning C4244:  '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1050,29): warning C4244:  '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1051,26): warning C4244:  '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+  GameDHMT.vcxproj -> D:\DHMT-TH-\GameDHMT\Debug\GameDHMT.exe

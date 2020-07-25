@@ -3,8 +3,8 @@
 #include "Dependencies\glew\glew.h"
 #include "Dependencies\freeglut\freeglut.h"
 
-const int screenWidth = 640;
-const int screenHeight = 480;
+//const int screenWidth = 640;
+//const int screenHeight = 480;
 //const int screenWidth = 250;//bai 13
 //const int screenHeight = 250;//bai 13
 
@@ -865,78 +865,213 @@ int main(int argc, char** argv)
 }
 
 */
+//#include <math.h>
+//
+//const double R = 150;
+//const double pi = 3.141592654;
+//
+//struct GLdoublePoint
+//{
+//	GLdouble x;
+//	GLdouble y;
+//};
+//
+//void Init(void)
+//{
+//	glClearColor(1.0, 1.0, 1.0, 0.0);
+//	glShadeModel(GL_FLAT);
+//}
+//
+//void Display()
+//{
+//	glClear(GL_COLOR_BUFFER_BIT);//Xoa man hinh
+//	glPointSize(5.0);
+//	glColor3f(0.0f, 0.0f, 0.0f); // Thiey lap mau ve (den)
+//	glBegin(GL_POINTS);
+//	GLdoublePoint V1, V2, V3, V4, V5, V0, V6;
+//	V0.x = screenWidth / 2;
+//	V0.y = screenHeight / 2;
+//	V1.x = V0.x;
+//	V1.y = V0.y + R;
+//	V2.x = V0.x + R * sin(2 * pi / 5);
+//	V2.y = V0.y + R * cos(2 * pi / 5);
+//	V3.x = V0.x + R * sin(pi / 5);
+//	V3.y = V0.y - R * cos(pi / 5);
+//	V4.x = V0.x - R * sin(pi / 5);
+//	V4.y = V0.y - R * cos(pi / 5);
+//	V5.x = V0.x - R * sin(2 * pi / 5);
+//	V5.y = V0.y + R * cos(2 * pi / 5);
+//	V6.x = V0.x - R * sin(2 *pi / 2.5);
+//	V6.y = V0.x + R * sin(2 * pi /2.5 );
+//
+//
+//	glVertex2d(V1.x, V1.y);
+//	glVertex2d(V2.x, V2.y);
+//	glVertex2d(V3.x, V4.y);
+//	glVertex2d(V4.x, V4.y);
+//	glVertex2d(V5.x, V5.y);
+//	glVertex2d(V6.x, V6.y);
+//	
+//
+//	glEnd();
+//
+//	glFlush();
+//}
+//
+//void Reshape(int w, int h)
+//{
+//	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+//	glMatrixMode(GL_PROJECTION);
+//	glLoadIdentity();
+//	gluOrtho2D(0.0, (GLdouble)w, 0.0, (GLdouble)h);
+//}
+//
+//int main(int argc, char** argv)
+//{
+//	glutInit(&argc, argv);
+//	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+//	glutInitWindowSize(screenWidth, screenHeight); //optional
+//	glutInitWindowPosition(100, 100); //optional
+//	glutCreateWindow(argv[0]);
+//	Init();
+//	glutDisplayFunc(Display);
+//	glutReshapeFunc(Reshape);
+//	glutMainLoop();
+//	return 0;
+//
+//}
+
+//bai 1 -lap 2
+
 #include <math.h>
+#define PI 3.14159265f
 
-const double R = 150;
-const double pi = 3.141592654;
+//Global variables
+char title[] = "Bouncing Ball (2D)";
+int windowWitdh = 640;
+int windowHeight = 480;
+int windowPosX = 50;
+int windowPosY = 50;
 
-struct GLdoublePoint
+GLfloat ballRadius = 0.5f;
+GLfloat ballX = 0.0f;
+GLfloat ballY = 0.0f;
+GLfloat ballXMax, ballXMin, ballYMax, ballYMin;
+GLfloat xSpeed = 0.02f;
+GLfloat ySpeed = 0.007f;
+int refreshMillis = 30;
+
+GLdouble clipAreaXLeft, clipAreaXRight, clipAreaYBottom, clipAreaYTop;
+
+void InitGL()
 {
-	GLdouble x;
-	GLdouble y;
-};
+	glClearColor(0.0, 0.0, 0.0, 1.0);
 
-void Init(void)
-{
-	glClearColor(1.0, 1.0, 1.0, 0.0);
-	glShadeModel(GL_FLAT);
 }
 
 void Display()
 {
-	glClear(GL_COLOR_BUFFER_BIT);//Xoa man hinh
-	glPointSize(5.0);
-	glColor3f(0.0f, 0.0f, 0.0f); // Thiey lap mau ve (den)
-	glBegin(GL_POINTS);
-	GLdoublePoint V1, V2, V3, V4, V5, V0, V6;
-	V0.x = screenWidth / 2;
-	V0.y = screenHeight / 2;
-	V1.x = V0.x;
-	V1.y = V0.y + R;
-	V2.x = V0.x + R * sin(2 * pi / 5);
-	V2.y = V0.y + R * cos(2 * pi / 5);
-	V3.x = V0.x + R * sin(pi / 5);
-	V3.y = V0.y - R * cos(pi / 5);
-	V4.x = V0.x - R * sin(pi / 5);
-	V4.y = V0.y - R * cos(pi / 5);
-	V5.x = V0.x - R * sin(2 * pi / 5);
-	V5.y = V0.y + R * cos(2 * pi / 5);
-	V6.x = V0.x - R * sin(2 *pi / 2.5);
-	V6.y = V0.x + R * sin(2 * pi /2.5 );
+	glClear(GL_COLOR_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 
+	glTranslatef(ballX, ballY, 0.0f);
 
-	glVertex2d(V1.x, V1.y);
-	glVertex2d(V2.x, V2.y);
-	glVertex2d(V3.x, V4.y);
-	glVertex2d(V4.x, V4.y);
-	glVertex2d(V5.x, V5.y);
-	glVertex2d(V6.x, V6.y);
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex2f(0.0f, 0.0f);
+	int numSegments = 100;
+	GLfloat angle;
+	for (int i = 0; i <= numSegments; i++)
+	{
+
+		angle = i * 2.0f * PI / numSegments;
+		glVertex2f(cos(angle) * ballRadius, sin(angle) * ballRadius);
+	}
+		glEnd();
+
+		glutSwapBuffers();
 	
+	ballX += xSpeed;
+	ballY += ySpeed;
 
-	glEnd();
+	if (ballX > ballXMax)
+	{
+		ballX = ballXMax;
+		xSpeed = -xSpeed;
+	}
 
-	glFlush();
+	else if (ballX < ballXMin)
+	{
+		ballX = ballXMin;
+		xSpeed = -xSpeed;
+	}
+
+	if (ballY > ballYMax)
+	{
+		ballY = ballYMax;
+		ySpeed = -ySpeed;
+	}
+	else if (ballY < ballYMin)
+	{
+		ballY = ballYMin;
+		ySpeed = -ySpeed;
+	}
 }
 
-void Reshape(int w, int h)
+void Reshape(GLsizei width, GLsizei height)
 {
-	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+	if (height == 0) height = 1;
+	GLfloat aspect = (GLfloat)width / (GLfloat)height;
+
+	glViewport(0, 0, width, height);
+
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(0.0, (GLdouble)w, 0.0, (GLdouble)h);
+
+	if (width >= height)
+	{
+		clipAreaXLeft = -1.0 * aspect;
+		clipAreaXRight = 1.0 * aspect;
+		clipAreaYBottom = -1.0;
+		clipAreaYTop = 1.0;
+	}
+
+	else
+	{
+		clipAreaXLeft = -1.0;
+		clipAreaXRight = 1.0;
+		clipAreaYBottom = -1.0 / aspect;
+		clipAreaYTop = 1.0 / aspect;
+	}
+	gluOrtho2D(clipAreaXLeft, clipAreaXRight, clipAreaYBottom, clipAreaYTop);
+	ballXMin = clipAreaXLeft + ballRadius;
+	ballXMax = clipAreaXRight - ballRadius;
+	ballYMin = clipAreaYBottom + ballRadius;
+	ballYMax = clipAreaYTop - ballRadius;
+
+}
+
+void Timer(int value)
+{
+	glutPostRedisplay();
+	glutTimerFunc(refreshMillis, Timer, 0);
+
 }
 
 int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
-	glutInitWindowSize(screenWidth, screenHeight); //optional
-	glutInitWindowPosition(100, 100); //optional
-	glutCreateWindow(argv[0]);
-	Init();
+	glutInitDisplayMode(GLUT_DOUBLE);
+	glutInitWindowSize(windowWitdh, windowHeight);
+
+	glutInitWindowPosition(windowPosX, windowPosY);
+
+	glutCreateWindow(title);
 	glutDisplayFunc(Display);
 	glutReshapeFunc(Reshape);
+	glutTimerFunc(0, Timer, 0);
+	InitGL();
 	glutMainLoop();
 	return 0;
-
 }
