@@ -1,8 +1,12 @@
 ﻿  main.cpp
-D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(989,50): warning C4244:  'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(989,25): warning C4244:  'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1048,27): warning C4244:  '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1049,28): warning C4244:  '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1050,29): warning C4244:  '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1051,26): warning C4244:  '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1318,28): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1321,54): warning C4244:  '-=': conversion from 'double' to 'float', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1322,55): warning C4244:  '-=': conversion from 'double' to 'float', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1326,28): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1329,54): warning C4244:  '+=': conversion from 'double' to 'float', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1330,55): warning C4244:  '+=': conversion from 'double' to 'float', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1337,28): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1340,54): warning C4244:  '-=': conversion from 'double' to 'float', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1341,55): warning C4244:  '-=': conversion from 'double' to 'float', possible loss of data
+D:\DHMT-TH-\GameDHMT\GameDHMT\main.cpp(1432,1): warning C4326:  return type of 'main' should be 'int' instead of 'void'
   GameDHMT.vcxproj -> D:\DHMT-TH-\GameDHMT\Debug\GameDHMT.exe
