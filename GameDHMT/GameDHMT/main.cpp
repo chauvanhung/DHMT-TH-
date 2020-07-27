@@ -1120,9 +1120,11 @@ int main(int argc, char** argv)
 //}
 
 //bai 3 -lap 2
+/*
 #include<math.h>
 #include<iostream>
 
+//các hàm vẽ
 void InitGlut(int argc, char** argv);
 void DisplayFunc(void);
 void IdleFunc(void);
@@ -1133,12 +1135,13 @@ void SpecialFunc(int key, int x, int y);
 void MouseMotionFunc(int x, int y);
 //-----------------------------------------------------------//
 
+
 //other[openGL] functions
-void CountFrames(void);
-void RenderBitmapString(float x, float y, float z, void* font, char* string);
+void CountFrames(void);//hàm tính frames
+void RenderBitmapString(float x, float y, float z, void* font, char* string);//hàm render
 //----------------------------------------------------------------------------//
 
-bool bUserPredefinedCamera = true;
+bool bUserPredefinedCamera = true; //
 
 bool bFullScreen = false;
 int nWindowID;
@@ -1154,8 +1157,8 @@ float NavigationRotation[3] = { 0.0,0.0,0.0 };
 //--------------------------------------------------//
 
 //framecounter
-char pixelstring[30];
-int cframe = 0;
+char pixelstring[30];//pixel
+int cframe = 0;//
 int time = 0;
 int timebase = 0;
 
@@ -1437,3 +1440,128 @@ void main(int argc, char** argv)
 	InitGlut(argc, argv);
 	glutMainLoop();
 }
+*/
+
+//bai 4- lap 2
+//
+//
+//void DisplayFunc(void)
+//{
+//	static float alpha = 0;
+//	/*clear the buffer, clear the matrix*/
+//	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//	glLoadIdentity();
+//
+//	/*A step backward, the spin the cube */
+//	glTranslatef(0, 0, -10);
+//	glRotatef(30, 1, 0, 0);
+//	glRotatef(alpha, 0, 1, 0);
+//
+//	/* We tell we want to draw quads*/
+//
+//	glBegin(GL_QUADS);
+//
+//	/* Every four calls to glVertex, a quad is draw */
+//
+//	//1
+//	glColor3f(0, 0, 0); glVertex3f(-1, -1, -1);
+//	glColor3f(0, 0, 1); glVertex3f(-1, -1, 1);
+//	glColor3f(0, 1, 1); glVertex3f(-1, 1, 1);
+//	glColor3f(0, 1, 0); glVertex3f(-1, 1, -1);
+//
+//	//2
+//	glColor3f(1, 0, 0); glVertex3f(1, -1, -1);
+//	glColor3f(1, 0, 1); glVertex3f(1, -1, 1);
+//	glColor3f(1, 1, 1); glVertex3f(1, 1,  1);
+//	glColor3f(1, 1, 0); glVertex3f(1, 1, -1);
+//
+//	//3
+//	glColor3f(0, 0, 0); glVertex3f(-1, -1, -1);
+//	glColor3f(0, 0, 1); glVertex3f(-1, -1, 1);
+//	glColor3f(1, 0, 1); glVertex3f(1, -1, 1);
+//	glColor3f(1, 0, 0); glVertex3f(1, -1, -1);
+//	
+//	//4
+//	glColor3f(0, 1, 0); glVertex3f(-1, 1, -1);
+//	glColor3f(0, 1, 1); glVertex3f(-1, 1, 1);
+//	glColor3f(1, 1, 1); glVertex3f(1, 1, 1);
+//	glColor3f(1, 1, 0); glVertex3f(1, 1, -1);
+//
+//	//5
+//	glColor3f(0, 0, 0); glVertex3f(-1, -1, -1);
+//	glColor3f(0, 1, 0); glVertex3f(-1, 1, -1);
+//	glColor3f(1, 1, 0); glVertex3f(1, 1, -1);
+//	glColor3f(1, 0, 0); glVertex3f(1, -1, -1);
+//
+//	//6
+//	glColor3f(0, 0, 1); glVertex3f(-1, -1, 1);
+//	glColor3f(0, 1, 1); glVertex3f(-1, 1, 1);
+//	glColor3f(1, 1, 1); glVertex3f(1, 1, 1);
+//	glColor3f(1, 0, 1); glVertex3f(1, -1, 1);
+//
+//	/* No more quads */
+//	glEnd();
+//
+//	/* Rotaate a bit more */
+//	alpha = alpha + 0.1;
+//
+//	/*end*/
+//
+//	glFlush();
+//	glutSwapBuffers();
+//
+//	/* Update again and again*/
+//	glutPostRedisplay();
+//}
+//
+///* Function called when the window is created or resized */
+//
+//void ReshapeFunc(int width, int height)
+//{
+//	glMatrixMode(GL_PROJECTION);
+//
+//	glLoadIdentity();
+//	gluPerspective(20, width / (float)height, 5, 15);
+//	glViewport(0, 0, width, height);
+//
+//	glMatrixMode(GL_MODELVIEW);
+//	glutPostRedisplay();
+//
+//}
+//
+///* function called when a key is hit */
+//
+//void KeyboardFunc(unsigned char key, int x, int y)
+//{
+//	int foo;
+//
+//	foo = x + y; /*Has no effect: jusst to avoid a warning */
+//	if ('q' == key || 'Q' == key || 27 == key)
+//		exit(0);
+//}
+//
+//int main(int argc, char** argv)
+//{
+//	/*Creation of the window*/
+//	glutInit(&argc, argv);
+//	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+//	glutInitWindowSize(500, 500);
+//	glutCreateWindow("Snipping cube");
+//
+//	/* OpenGL settings */
+//
+//	glClearColor(0, 0, 0, 0);
+//	glEnable(GL_DEPTH_TEST);
+//
+//	/*Declabration of the callbacks */
+//	glutDisplayFunc(&DisplayFunc);
+//	glutReshapeFunc(&ReshapeFunc);
+//	glutKeyboardFunc(&KeyboardFunc);
+//
+//	/* Loop */
+//	glutMainLoop();
+//
+//	/*Never reached */
+//	return 0;
+//}
+
