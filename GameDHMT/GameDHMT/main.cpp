@@ -1120,7 +1120,7 @@ int main(int argc, char** argv)
 //}
 
 //bai 3 -lap 2
-/*
+
 #include<math.h>
 #include<iostream>
 
@@ -1440,7 +1440,7 @@ void main(int argc, char** argv)
 	InitGlut(argc, argv);
 	glutMainLoop();
 }
-*/
+
 
 //bai 4- lap 2
 //
